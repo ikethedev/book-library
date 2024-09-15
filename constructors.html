@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+// function Player(name, marker) {
+//     this.name = name;
+//     this.marker = marker;
+//     this.sayName = () => {
+//       console.log("Hi I am " + this.name);
+//     }
+//   }
+  
+//   const playerOne = new Player("Steve", "X");
+//   const playerTwo = new Player("Isaac", "O");
+
+
+//   console.log(Object.getPrototypeOf(playerOne) === Player.prototype) 
+//   console.log(Object.getPrototypeOf(playerTwo) === Player.prototype) 
+//   console.log(Object.getPrototypeOf(playerOne) === Object.getPrototypeOf(playerTwo)) 
+// console.log(Object.getPrototypeOf(Player.prototype) === Object.prototype)
+// console.log(playerOne.valueOf())
+
+function Person(name) {
+    this.name = name;
+  }
+  
+  Person.prototype.sayName = function() {
+    console.log(`Hello, I'm ${this.name}!`);
+  };
+  
+  const isaac = new Person("Isaac");
+
+  function Player(name, marker) {
+    this.name = name;
+    this.marker = marker;
+  }
+  
+  Player.prototype.getMarker = function() {
+    console.log(`My marker is '${this.marker}'`);
+  };
+  
+  Object.getPrototypeOf(Player.prototype); // returns Object.prototype
+  
+  // Now make `Player` objects inherit from `Person`
+  Object.setPrototypeOf(Player.prototype, Person.prototype); //
+  Object.getPrototypeOf(Player.prototype); // returns Person.prototype
+  
+  const player1 = new Player('steve', 'X');
+  const player2 = new Player('also steve', 'O');
+  
+  player1.sayName(); // Hello, I'm steve!
+  player2.sayName(); // Hello, I'm also steve!
+  
+  player1.getMarker(); // My marker is 'X'
+  player2.getMarker(); // My marker is 'O'
+  
+
+  
+
+
+// function Books(title, author, pages, read){
+//     this.title = title;
+//     this.author = author;
+//     this.pages = pages;
+//     this.read = read;
+//     this.info = function(){
+//         return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read ? "read" : "not read yet"})`
+//     }
+// }
+
+// const book1 = new Books("Harry Potter", "J.K. Rowling", 500, false);
+// console.log(book1.info())
+  </script>
+</body>
+</html>
